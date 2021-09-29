@@ -209,3 +209,21 @@ The test is already defined on the FortiTester and linked with the network.<br>
 ```
 
 Feel free to modify it and use different url paths of FortiTester documentation.<br>
+
+6. Create a file called `site.yml` inside `/home/user/ansible_fortitester_tests` and add the role.
+```
+- hosts: localhost
+  gather_facts: false
+  ignore_errors: true
+  roles:
+  - Test_IPS
+```
+
+<br><br>NOTE: The ansible module calls the API of FortiTester from localhost, so no remote ansible host must be setup in the inventory file of ansible.<br>
+7. Start the playbook.
+```
+ansible-playbook site.yml
+```
+
+You must see output on the console if you have setup everything properly.
+Make sure your host has connection to FortiTester and your user has proper permissions to execute FortiTester commands via API calls.
